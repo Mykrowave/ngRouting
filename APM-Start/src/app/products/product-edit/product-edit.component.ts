@@ -4,7 +4,7 @@ import { MessageService } from '../../messages/message.service';
 
 import { Product } from '../product';
 import { ProductService } from '../product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   templateUrl: './product-edit.component.html',
@@ -18,11 +18,14 @@ export class ProductEditComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private messageService: MessageService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
-    const routeProductId: number = +this.activatedRoute.snapshot.paramMap.get('id');
-    this.getProduct(routeProductId);
+    this.activatedRoute.paramMap.subscribe(par => {
+      const routeProductId: number = +par.get('id');
+      this.getProduct(routeProductId);
+    });
   }
 
   getProduct(id: number): void {
@@ -88,5 +91,7 @@ export class ProductEditComponent implements OnInit {
     }
 
     // Navigate back to the product list
+    this.router.navigate(['/products']);
+
   }
 }
