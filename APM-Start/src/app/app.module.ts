@@ -20,7 +20,7 @@ import { AppRouterModule } from './app-router.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    InMemoryWebApiModule.forRoot(ProductData, { delay: 1000 }),
+    InMemoryWebApiModule.forRoot(ProductData, { delay: 600 }),
     ProductModule,
     UserModule,
     MessageModule,
