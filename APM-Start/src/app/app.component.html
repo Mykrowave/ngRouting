@@ -30,6 +30,10 @@
     </li>
   </ul>
 </nav>
+
 <div class="container" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
   <router-outlet #o="outlet"></router-outlet>
+</div>
+<div *ngIf="isLoading">
+  <span class="fa fa-spinner spinner"></span>
 </div>
