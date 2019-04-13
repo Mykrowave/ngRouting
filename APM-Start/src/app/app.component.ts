@@ -38,6 +38,8 @@ export class AppComponent implements OnInit {
           ev instanceof NavigationCancel ||
           ev instanceof NavigationError) { this.isLoading = false; }
     });
+
+
   }
 
   showMessages(): void {
