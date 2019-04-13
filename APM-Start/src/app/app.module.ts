@@ -12,7 +12,6 @@ import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 
 /* Feature Modules */
-import { ProductModule } from './products/product.module';
 import { UserModule } from './user/user.module';
 import { MessageModule } from './messages/message.module';
 import { AppRouterModule } from './app-router.module';
@@ -23,7 +22,6 @@ import { AppRouterModule } from './app-router.module';
     BrowserAnimationsModule,
     HttpClientModule,
     InMemoryWebApiModule.forRoot(ProductData, { delay: 600 }),
-    ProductModule,
     UserModule,
     MessageModule,
     AppRouterModule
