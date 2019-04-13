@@ -9,6 +9,7 @@ import { Route } from '@angular/router';
 })
 export class AuthService {
   currentUser: User;
+  redirectUrl: string;
 
   get isLoggedIn(): boolean {
     return !!this.currentUser;
