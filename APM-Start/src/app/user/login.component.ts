@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   templateUrl: './login.component.html'
@@ -21,6 +20,7 @@ export class LoginComponent {
       this.authService.login(userName, password);
 
       // Navigate to the Product List page after log in.
+      console.log('logged in!');
       this.router.navigate(['/products']);
     } else {
       this.errorMessage = 'Please enter a user name and password.';
