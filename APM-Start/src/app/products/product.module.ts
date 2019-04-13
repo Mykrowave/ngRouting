@@ -12,26 +12,20 @@ import { ProductEditTagsComponent } from './product-edit/product-edit-tags.compo
 import { AuthGuard } from '../user/auth.guard';
 
 const Routes: Route[] = [
+  { path: '', component: ProductListComponent },
   {
-    path: 'products',
-    canActivate: [ AuthGuard ],
+    path: ':id',
+    component: ProductDetailComponent,
+    resolve: { resolvedData: ProductResolverService }
+  },
+  {
+    path: ':id/edit',
+    component: ProductEditComponent,
+    resolve: { resolvedData: ProductResolverService },
     children: [
-      { path: '', component: ProductListComponent },
-      {
-        path: ':id',
-        component: ProductDetailComponent,
-        resolve: { resolvedData: ProductResolverService }
-      },
-      {
-        path: ':id/edit',
-        component: ProductEditComponent,
-        resolve: { resolvedData: ProductResolverService },
-        children: [
-          { path: '', pathMatch: 'full', redirectTo: 'info' },
-          { path: 'info', component: ProductEditInfoComponent },
-          { path: 'tags', component: ProductEditTagsComponent }
-        ]
-      }
+      { path: '', pathMatch: 'full', redirectTo: 'info' },
+      { path: 'info', component: ProductEditInfoComponent },
+      { path: 'tags', component: ProductEditTagsComponent }
     ]
   }
 ];
